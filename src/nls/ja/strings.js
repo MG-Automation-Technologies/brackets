@@ -86,7 +86,7 @@ define({
 	"LIVE_DEV_SERVER_NOT_READY_MESSAGE": "ライブ開発ファイルで使用する HTTP サーバーの起動時にエラーが発生しました。もう一度実行してください。",
 	"LIVE_DEVELOPMENT_INFO_TITLE": "ライブプレビューへようこそ",
 	"LIVE_DEVELOPMENT_INFO_MESSAGE": "ライブプレビューにより {APP_NAME} がブラウザーに接続しました。ブラウザーで HTML ファイルのプレビューが起動し、コードを編集すると直ちにプレビューが更新されます。<br /><br />この初期バージョンの {APP_NAME} では、<strong>Google Chrome</strong> でのみライブプレビューが機能し、<strong>CSS ファイル</strong>の編集時にのみライブ更新が行われます。HTML または JavaScript ファイルへの変更は、保存時に自動的にリロードされます。<br /><br />(このメッセージは一度しか表示されません。)",
-	"LIVE_DEVELOPMENT_TROUBLESHOOTING": "詳しくは、<a class=\"clickable-link\" data-href=\"{0}\">Live Development の接続エラーに関するトラブルシューティング</a>を参照してください。",
+	"LIVE_DEVELOPMENT_TROUBLESHOOTING": "!能=[6499050] For more information, see <a href='{0}' title='{0}'>Troubleshooting Live Development connection errors</a>._=!",
     
 	"LIVE_DEV_STATUS_TIP_NOT_CONNECTED": "ライブプレビュー",
 	"LIVE_DEV_STATUS_TIP_PROGRESS1": "ライブプレビュー : 接続中\u2026",
@@ -103,7 +103,7 @@ define({
 	"SAVE_CLOSE_MESSAGE": "文書 <span class='dialog-filename'>{0}</span> に加えた変更を保存しますか？",
 	"SAVE_CLOSE_MULTI_MESSAGE": "以下のファイルに対する変更を保存しますか？",
 	"EXT_MODIFIED_TITLE": "外部で変更されました。",
-	"CONFIRM_FOLDER_DELETE_TITLE": "削除確認",
+	"CONFIRM_FOLDER_DELETE_TITLE": "削除の確認",
 	"CONFIRM_FOLDER_DELETE": "<span class='dialog-filename'>{0}</span> フォルダーを削除してもよろしいですか？",
 	"FILE_DELETED_TITLE": "ファイルは削除されました",
 	"EXT_MODIFIED_MESSAGE": "<span class='dialog-filename'>{0}</span> はディスク上で変更されていますが、{APP_NAME} 内にも保存されていない変更があります。<br /><br />どちらのバージョンを保持しますか？",
@@ -112,10 +112,19 @@ define({
     // Find, Replace, Find in Files
 	"SEARCH_REGEXP_INFO": "正規表現による検索には /re/ シンタックスを使用してください",
 	"FIND_RESULT_COUNT": "{0} 件",
+	"FIND_RESULT_COUNT_SINGLE": "1 件",
+	"FIND_NO_RESULTS": "該当なし",
 	"WITH": "置換後の文字列",
 	"BUTTON_YES": "はい",
 	"BUTTON_NO": "いいえ",
+	"BUTTON_REPLACE_ALL": "すべて\u2026",
 	"BUTTON_STOP": "終了",
+	"BUTTON_REPLACE": "置換",
+            
+	"BUTTON_NEXT": "!能=[7150631] \u25B6_=!",
+	"BUTTON_PREV": "!能=[7150633] \u25C0_=!",
+	"BUTTON_NEXT_HINT": "次の候補に移動",
+	"BUTTON_PREV_HINT": "前の候補に移動",
 
 	"OPEN_FILE": "ファイルを開く",
 	"SAVE_FILE_AS": "ファイルを保存",
@@ -124,8 +133,14 @@ define({
 	"RELEASE_NOTES": "リリースノート",
 	"NO_UPDATE_TITLE": "最新バージョンです",
 	"NO_UPDATE_MESSAGE": "{APP_NAME} の最新バージョンを実行中です。",
-    
-	"FIND_IN_FILES_TITLE": "「{4}」が見つかりました {5} &mdash; {0} {1} / {2} {3}",
+
+	"FIND_REPLACE_TITLE_PART1": "「",
+	"FIND_REPLACE_TITLE_PART2": "」を「",
+	"FIND_REPLACE_TITLE_PART3": "」に置き換え &mdash; {2} {0} {1}",
+
+	"FIND_IN_FILES_TITLE_PART1": "「",
+	"FIND_IN_FILES_TITLE_PART2": "」が見つかりました",
+	"FIND_IN_FILES_TITLE_PART3": "&mdash; {0} {1} ({2} {3})",
 	"FIND_IN_FILES_SCOPED": "<span class='dialog-filename'>{0}</span> 内",
 	"FIND_IN_FILES_NO_SCOPE": "プロジェクト内",
 	"FIND_IN_FILES_FILE": "ファイル",
@@ -134,9 +149,7 @@ define({
 	"FIND_IN_FILES_MATCHES": "一致",
 	"FIND_IN_FILES_MORE_THAN": "以上",
 	"FIND_IN_FILES_PAGING": "{0}&mdash;{1}",
-	"FIND_IN_FILES_LESS": " <a href='#' class='find-less'>表示数を減らす</a>",
-	"FIND_IN_FILES_MORE": " <a href='#' class='find-more'>表示数を増やす</a>",
-	"FIND_IN_FILES_FILE_PATH": "ファイル : <span class='dialog-filename'>{0}</span>",
+	"FIND_IN_FILES_FILE_PATH": "<span class='dialog-filename'>{0}</span> {2} <span class='dialog-path'>{1}</span>",
 	"FIND_IN_FILES_LINE": "行 : {0}",
 
 	"ERROR_FETCHING_UPDATE_INFO_TITLE": "更新情報を取得する際にエラーが発生しました。",
@@ -168,11 +181,21 @@ define({
 	"STATUSBAR_INDENT_TOOLTIP_TABS": "インデントをタブに変換する",
 	"STATUSBAR_INDENT_SIZE_TOOLTIP_SPACES": "インデントに用いるスペースの数を変更",
 	"STATUSBAR_INDENT_SIZE_TOOLTIP_TABS": "タブ幅を変更",
-	"STATUSBAR_SPACES": "スペース",
-	"STATUSBAR_TAB_SIZE": "タブ幅",
+	"STATUSBAR_SPACES": "スペース :",
+	"STATUSBAR_TAB_SIZE": "タブ幅 :",
 	"STATUSBAR_LINE_COUNT_SINGULAR": "\u2014 {0} 行",
 	"STATUSBAR_LINE_COUNT_PLURAL": "\u2014 {0} 行",
 
+    // CodeInspection: errors/warnings
+	"ERRORS_PANEL_TITLE": "!能=[7150674] {0} Errors_=!",
+	"SINGLE_ERROR": "!能=[7150681] 1 {0} Error_=!",
+	"MULTIPLE_ERRORS": "!能=[7150677] {1} {0} Errors_=!",
+	"NO_ERRORS": "!能=[7150679] No {0} errors - good job!_=!",
+	"LINT_DISABLED": "!能=[7150676] Linting is disabled_=!",
+	"NO_LINT_AVAILABLE": "!能=[7150680] No linter available for {0}_=!",
+	"NOTHING_TO_LINT": "!能=[7150678] Nothing to lint_=!",
+    
+    
     /**
      * Command Name Constants
      */
@@ -191,7 +214,6 @@ define({
 	"CMD_FILE_SAVE_ALL": "すべて保存",
 	"CMD_FILE_SAVE_AS": "名前を付けて保存\u2026",
 	"CMD_LIVE_FILE_PREVIEW": "ライブプレビュー",
-	"CMD_LIVE_HIGHLIGHT": "ライブプレビューハイライト",
 	"CMD_PROJECT_SETTINGS": "プロジェクト設定\u2026",
 	"CMD_FILE_RENAME": "ファイル名変更",
 	"CMD_FILE_DELETE": "削除",
@@ -242,6 +264,8 @@ define({
 	"CMD_TOGGLE_LINE_NUMBERS": "行番号",
 	"CMD_TOGGLE_ACTIVE_LINE": "アクティブな行をハイライト",
 	"CMD_TOGGLE_WORD_WRAP": "折り返し",
+	"CMD_LIVE_HIGHLIGHT": "ライブプレビューハイライト",
+	"CMD_VIEW_TOGGLE_INSPECTION": "!能=[7150673] Lint Files on Save_=!",
 	"CMD_SORT_WORKINGSET_BY_ADDED": "追加日時順",
 	"CMD_SORT_WORKINGSET_BY_NAME": "名前順",
 	"CMD_SORT_WORKINGSET_BY_TYPE": "種類順",
@@ -252,6 +276,7 @@ define({
 	"CMD_QUICK_OPEN": "クイックオープン",
 	"CMD_GOTO_LINE": "行に移動",
 	"CMD_GOTO_DEFINITION": "定義をクイック検索",
+	"CMD_GOTO_FIRST_PROBLEM": "!能=[7150671] Go to First Error/Warning_=!",
 	"CMD_TOGGLE_QUICK_EDIT": "クイック編集",
 	"CMD_TOGGLE_QUICK_DOCS": "クイックドキュメント",
 	"CMD_QUICK_EDIT_PREV_MATCH": "前の候補に移動",
@@ -293,11 +318,11 @@ define({
 	"ABOUT": "このソフトウェアについて",
 	"CLOSE": "閉じる",
 	"ABOUT_TEXT_LINE1": "スプリント {VERSION_MINOR} {BUILD_TYPE} {VERSION}",
-	"ABOUT_TEXT_LINE3": "Notices, terms and conditions pertaining to third party software are located at <a class=\"clickable-link\" data-href=\"{ADOBE_THIRD_PARTY}\">{ADOBE_THIRD_PARTY}</a> and incorporated by reference herein.",
-	"ABOUT_TEXT_LINE4": "ドキュメントとソースコードは <a class=\"clickable-link\" data-href=\"https://github.com/adobe/brackets/\">https://github.com/adobe/brackets/</a> から入手できます。",
+	"ABOUT_TEXT_LINE3": "!能=[6307069] Notices, terms and conditions pertaining to third party software are located at <a href='{ADOBE_THIRD_PARTY}'>{ADOBE_THIRD_PARTY}</a> and incorporated by reference herein._=!",
+	"ABOUT_TEXT_LINE4": "!能=[6307070] Documentation and source at <a href='https://github.com/adobe/brackets/'>https://github.com/adobe/brackets/</a>_=!",
 	"ABOUT_TEXT_LINE5": "\u2764 および JavaScript を使用して次の人によって作成されました :",
 	"ABOUT_TEXT_LINE6": "多くの人々 (ただし、人物データの読み込みに問題が発生しています)。",
-	"ABOUT_TEXT_WEB_PLATFORM_DOCS": "Web Platform Docs and the Web Platform graphical logo are licensed under a Creative Commons Attribution license, <a class=\"clickable-link\" data-href=\"{WEB_PLATFORM_DOCS_LICENSE}\">CC-BY 3.0 Unported</a>.",
+	"ABOUT_TEXT_WEB_PLATFORM_DOCS": "!能=[6781670] Web Platform Docs and the Web Platform graphical logo are licensed under a Creative Commons Attribution license, <a href='{WEB_PLATFORM_DOCS_LICENSE}'>CC-BY 3.0 Unported</a>._=!",
 	"UPDATE_NOTIFICATION_TOOLTIP": "{APP_NAME} の新しいビルドを利用できます。詳細はここをクリックしてください。",
 	"UPDATE_AVAILABLE_TITLE": "利用可能なアップデートがあります",
 	"UPDATE_MESSAGE": "{APP_NAME} の新しいビルドが利用できます。新機能の一部を以下にご紹介します :",
@@ -309,7 +334,7 @@ define({
 	"BASEURL_ERROR_SEARCH_DISALLOWED": "ベース URL には、「{0}」のような検索パラメーターは使用できません。",
 	"BASEURL_ERROR_HASH_DISALLOWED": "ベース URL には、「{0}」のようなハッシュ記号は使用できません。",
 	"BASEURL_ERROR_INVALID_CHAR": "「{0}」のような特殊文字は、パーセントエンコーディングする必要があります。",
-	"BASEURL_ERROR_UNKOWN_ERROR": "ベース URL の解析中に不明なエラーが発生しました",
+	"BASEURL_ERROR_UNKNOWN_ERROR": "ベース URL の解析中に不明なエラーが発生しました",
     
     // Extension Management strings
 	"INSTALL": "インストール",
@@ -394,6 +419,7 @@ define({
 
 	"UNIT_PIXELS": "ピクセル",
     
+    
     // extensions/default/DebugCommands
 	"DEBUG_MENU": "デバッグ",
 	"CMD_SHOW_DEV_TOOLS": "開発者ツールを表示",
@@ -412,9 +438,7 @@ define({
 	"LANGUAGE_CANCEL": "キャンセル",
 	"LANGUAGE_SYSTEM_DEFAULT": "デフォルトのシステム",
     
-    /**
-     * Locales
-     */
+    // Locales (used by Debug > Switch Language)
 	"LOCALE_CS": "チェコ語",
 	"LOCALE_DE": "ドイツ語",
 	"LOCALE_EN": "英語",
@@ -444,18 +468,17 @@ define({
     
     // extensions/default/JavaScriptCodeHints
 	"CMD_JUMPTO_DEFINITION": "定義にジャンプ",
+	"CMD_SHOW_PARAMETER_HINT": "パラメーターヒントを表示",
+	"NO_ARGUMENTS": "<パラメーターがありません>",
     
     // extensions/default/JSLint
-	"CMD_JSLINT": "JSLint を有効にする",
-	"CMD_JSLINT_FIRST_ERROR": "最初の JSLint エラーに移動",
-	"JSLINT_ERRORS": "JSLint エラー",
-	"JSLINT_ERROR_INFORMATION": "1 個の JSLint エラーがあります",
-	"JSLINT_ERRORS_INFORMATION": "{0} 個の JSLint エラーがあります",
-	"JSLINT_NO_ERRORS": "JSLint エラーはありません - Good job!",
-	"JSLINT_DISABLED": "JSLint は無効か、現在のファイルには実行されません",
+	"JSLINT_NAME": "!能=[7150675] JSLint_=!",
     
     // extensions/default/QuickView
 	"CMD_ENABLE_QUICK_VIEW": "ホバー・クイックビュー",
+    
+    // extensions/default/RecentProjects
+	"CMD_TOGGLE_RECENT_PROJECTS": "!能=[7150672] Recent Projects_=!",
     
     // extensions/default/WebPlatformDocs
 	"DOCS_MORE_LINK": "詳細"

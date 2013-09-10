@@ -132,7 +132,7 @@ define(function (require, exports, module) {
      *
      *  @param {{inFunctionCall: boolean, functionCallPos: {line: number, ch: number}}} functionInfo -
      *  tells if the caret is in a function call and the position
-     * of the function call.
+     *  of the function call.
      */
     function formatHint(functionInfo) {
         var hints = session.getParameterHint(functionInfo.functionCallPos),
@@ -197,7 +197,7 @@ define(function (require, exports, module) {
      * Test if the function call at the cursor is different from the currently displayed
      * function hint.
      *
-     * @param functionCallPos
+     * @param {{line:number, ch:number}} functionCallPos - the offset of the function call.
      * @return {boolean}
      */
     function hasFunctionCallPosChanged(functionCallPos) {
@@ -237,7 +237,7 @@ define(function (require, exports, module) {
      * figuring it out again.
      * @return {jQuery.Promise} - The promise will not complete until the
      *      hint has completed. Returns null, if the function hint is already
-     *      displayed or the there is no function hint at the cursor.
+     *      displayed or there is no function hint at the cursor.
      *
      */
     function popUpHint(pushExistingHint, hint, functionInfo) {
@@ -297,6 +297,29 @@ define(function (require, exports, module) {
     }
 
     /**
+     * Pop up a function hint on the line above the caret position if the character before
+     *      the current cursor is an open parenthesis
+     *
+     * @return {jQuery.Promise} - The promise will not complete until the
+     *      hint has completed. Returns null, if the function hint is already
+     *      displayed or there is no function hint at the cursor.
+     */
+    function popUpHintAtOpenParen() {
+        var functionInfo = session.getFunctionInfo();
+        if (functionInfo.inFunctionCall) {
+            var token = session.getToken();
+            
+            if (token && token.string === "(") {
+                return popUpHint();
+            }
+        } else {
+            dismissHint();
+        }
+        
+        return null;
+    }
+    
+    /**
      *  Show the parameter the cursor is on in bold when the cursor moves.
      *  Dismiss the pop up when the cursor moves off the function.
      */
@@ -304,7 +327,7 @@ define(function (require, exports, module) {
         var functionInfo = session.getFunctionInfo();
 
         if (functionInfo.inFunctionCall) {
-            // If in a different function hint, then dismiss the old one a
+            // If in a different function hint, then dismiss the old one and
             // display the new one if there is one on the stack
             if (hasFunctionCallPosChanged(functionInfo.functionCallPos)) {
                 if (popHintFromStack()) {
@@ -334,7 +357,7 @@ define(function (require, exports, module) {
     /**
      * Enable cursor tracking in the current session.
      *
-     * @param {Session} session - session to stop cursor tracking on.
+     * @param {Session} session - session to start cursor tracking on.
      */
     function startCursorTracking(session) {
         $(session.editor).on("cursorActivity", handleCursorActivity);
@@ -411,6 +434,7 @@ define(function (require, exports, module) {
     exports.installListeners        = installListeners;
     exports.isHintDisplayed         = isHintDisplayed;
     exports.popUpHint               = popUpHint;
+    exports.popUpHintAtOpenParen    = popUpHintAtOpenParen;
     exports.setSession              = setSession;
     exports.startCursorTracking     = startCursorTracking;
     exports.stopCursorTracking      = stopCursorTracking;
